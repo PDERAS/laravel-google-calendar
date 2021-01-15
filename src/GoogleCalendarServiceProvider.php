@@ -1,22 +1,22 @@
 <?php
 
-namespace Spatie\GoogleCalendar;
+namespace Pderas\GoogleCalendar;
 
 use Illuminate\Support\ServiceProvider;
-use Spatie\GoogleCalendar\Exceptions\InvalidConfiguration;
+use Pderas\GoogleCalendar\Exceptions\InvalidConfiguration;
 
 class GoogleCalendarServiceProvider extends ServiceProvider
 {
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/google-calendar.php' => config_path('google-calendar.php'),
+            __DIR__ . '/../config/google-calendar.php' => config_path('google-calendar.php'),
         ], 'config');
     }
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/google-calendar.php', 'google-calendar');
+        $this->mergeConfigFrom(__DIR__ . '/../config/google-calendar.php', 'google-calendar');
 
         $this->app->bind(GoogleCalendar::class, function () {
             $config = config('google-calendar');
@@ -72,11 +72,11 @@ class GoogleCalendarServiceProvider extends ServiceProvider
 
     protected function validateConfigSetting(string $setting)
     {
-        if (! is_array($setting) && ! is_string($setting)) {
+        if (!is_array($setting) && !is_string($setting)) {
             throw InvalidConfiguration::credentialsTypeWrong($setting);
         }
 
-        if (is_string($setting) && ! file_exists($setting)) {
+        if (is_string($setting) && !file_exists($setting)) {
             throw InvalidConfiguration::credentialsJsonDoesNotExist($setting);
         }
     }

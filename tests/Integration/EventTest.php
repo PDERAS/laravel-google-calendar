@@ -1,16 +1,16 @@
 <?php
 
-namespace Spatie\GoogleCalendar\Tests\Integration;
+namespace Pderas\GoogleCalendar\Tests\Integration;
 
 use Carbon\Carbon;
 use DateTime;
 use Mockery as m;
-use Spatie\GoogleCalendar\Event;
-use Spatie\GoogleCalendar\Tests\TestCase;
+use Pderas\GoogleCalendar\Event;
+use Pderas\GoogleCalendar\Tests\TestCase;
 
 class EventTest extends TestCase
 {
-    /** @var \Spatie\GoogleCalendar\Event */
+    /** @var \Pderas\GoogleCalendar\Event */
     protected $event;
 
     public function setUp(): void
@@ -117,11 +117,11 @@ class EventTest extends TestCase
     {
         $attendees = [
             [
-                'name' => 'Spatie',
+                'name' => 'Pderas',
                 'email' => 'spatie@example.com',
                 'comment' => "I'm ready for this meeting",
             ],
-            [ 'email' => 'devgummibeer@example.com' ],
+            ['email' => 'devgummibeer@example.com'],
         ];
 
         $this->event->addAttendee($attendees[0]);
